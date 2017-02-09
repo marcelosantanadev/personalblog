@@ -1,0 +1,42 @@
+{{!< default}}
+{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
+
+{{!-- The big featured header --}}
+
+<header class="main-header author-head  {{#if @blog.cover}}" style="background-image: url({{@blog.cover}}){{else}}no-cover{{/if}}">
+    <nav class="main-nav overlay clearfix">
+        {{#if @labs.subscribers}}
+            <a class="menu-button" href="{{@blog.url}}/subscribe/"><span class="word">Subscribe</span></a>
+        {{else}}
+            <a class="menu-button icon-feed" href="{{@blog.url}}/rss/"><span class="word">Subscribe</span></a>
+        {{/if}}
+        <!--{{#if @blog.navigation}}
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        {{/if}}-->
+    </nav>
+</header>
+
+<section class="author-profile inner">
+
+    {{#if @blog.logo}}
+        <figure class="author-image" style="width: 120px; height:120px;">
+            <div class="img" style="background-image: url({{@blog.logo}})"><span class="hidden">{{@blog.title}}'s Picture</span>
+            </div>
+        </figure>
+    {{/if}}
+
+    <div class="main-header-content inner">
+        <h1 class="author-title">{{@blog.title}}</h1>
+        <h2 class="author-bio">{{@blog.description}}</h2>
+    </div>
+</section>
+<!--<a class="scroll-down icon-arrow-left" style="color: black;" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>-->
+
+
+{{!-- The main content area on the homepage --}}
+<main id="content" class="content" role="main">
+
+    {{!-- The tag below includes the post loop - partials/loop.hbs --}}
+    {{> "loop"}}
+
+</main>
